@@ -9,7 +9,7 @@ export class Navbar extends Component {
       <div>
         <nav style={{ marginBottom: "30px" }} className="blue">
           <div className="nav-wrapper">
-          <a href ="#" className = "brand-logo left"><span className="material-icons">perm_identity</span>Github Finder</a>
+          <a href ="#" className = "brand-logo left"><i className="large material-icons">insert_chart</i>Github Finder</a>
           </div>
         </nav>
       </div>
