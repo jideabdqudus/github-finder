@@ -9,13 +9,14 @@ export class UserItem extends Component {
   };
 
   render() {
+      const {id, login, avatar_url, html_url} = this.state
     return (
       <div className="card text-center">
         <img
           src={avatar_url}
           alt="avatar"
           className="round-img"
-          style={{ width: "" }}
+          style={{ width: "60px" }}
         />
         <a href={html_url}>Click to See more</a>
       </div>
