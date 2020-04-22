@@ -1,15 +1,10 @@
 import React, { Component } from "react";
+import Users from "./Users"
 
 export class UserItem extends Component {
-  state = {
-    id: "id",
-    login: "jideabdqudus",
-    avatar_url: "https://avatars0.githubusercontent.com/u/45945474?v=4",
-    html_url: "https://github.com/jideabdqudus",
-  };
 
   render() {
-      const {id, login, avatar_url, html_url} = this.state
+      const {login, avatar_url, html_url} = this.props.user
     return (
       <div className="card text-center">
         <img
@@ -18,6 +13,7 @@ export class UserItem extends Component {
           className="round-img"
           style={{ width: "60px" }}
         />
+        <h3>{login}</h3>
         <a href={html_url}>Click to See more</a>
       </div>
     );
