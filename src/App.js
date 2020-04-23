@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './components/layout/Navbar';
-import UserItem from './components/Users/UserItem';
+import React, { Component } from "react";
+import "./App.css";
+import Navbar from "./components/layout/Navbar";
+import Users from "./components/Users/Users";
 
 class App extends Component {
-  render(){
-  return (
-    <div className="App">
-      <Navbar/>
-      <UserItem/>
-    </div>
-  );
-}
+  render() {
+    return (
+      <div className="App">
+        <Navbar />
+        <Users />
+      </div>
+    );
+  }
 }
 export default App;
