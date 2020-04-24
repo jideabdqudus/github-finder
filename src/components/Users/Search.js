@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types'
-
+import PropTypes from "prop-types";
 
 class Search extends Component {
   state = {
     text: "",
   };
 
-  static propTypes={
-      searchUsers:PropTypes.func.isRequired,
-      clearUsers: PropTypes.func.isRequired,
-      showClear:PropTypes.bool.isRequired,
-      setAlert:PropTypes.func.isRequired
-  }
+  static propTypes = {
+    searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired,
+  };
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
