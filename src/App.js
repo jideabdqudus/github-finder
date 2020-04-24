@@ -4,18 +4,13 @@ import Navbar from "./components/layout/Navbar";
 import Users from "./components/Users/Users";
 import axios from "axios";
 import Search from "./components/Users/Search";
-import PropTypes from "prop-types";
+import Alert from "./components/layout/Alert";
 
 class App extends Component {
   state = {
     users: [],
     loading: false,
-  };
-
-  static propTypes = {
-    searchUsers: PropTypes.func.isRequired,
-    clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired
+    alert: null,
   };
 
   //Search Functionality
@@ -28,15 +23,27 @@ class App extends Component {
     this.setState({ users: res.data.items, loading: false });
   };
 
+  //Set Alert
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg: msg, type: type } });
+    setTimeout(() => this.setState({ alert: null }), 3000);
+  };
+
   clearUsers = () => this.setState({ users: [], loading: false });
 
   render() {
-    const {users, loading}=this.state
+    const { users, loading } = this.state;
     return (
       <div className="App">
         <Navbar />
         <div className="container">
-          <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={this.state.users.length > 0 ? true: false}/>
+          <Alert alert={this.state.alert} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={this.state.users.length > 0 ? true : false}
+            setAlert={this.setAlert}
+          />
           <Users loading={loading} users={users} />
         </div>
       </div>
