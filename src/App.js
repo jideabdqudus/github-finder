@@ -6,6 +6,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from "./components/Users/Search";
 import Alert from "./components/layout/Alert";
+import About from "./components/pages/About";
 
 class App extends Component {
   state = {
@@ -44,7 +45,7 @@ class App extends Component {
               <Route
                 exact
                 path="/"
-                render={(props) => {
+                render={(props) => (
                   <Fragment>
                     <Search
                       searchUsers={this.searchUsers}
@@ -53,9 +54,10 @@ class App extends Component {
                       setAlert={this.setAlert}
                     />
                     <Users loading={loading} users={users} />
-                  </Fragment>;
-                }}
+                  </Fragment>
+                )}
               />
+              <Route exact path="/about" component={About} />
             </Switch>
           </div>
         </div>
