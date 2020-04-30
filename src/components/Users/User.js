@@ -13,7 +13,7 @@ export class User extends Component {
     loading: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     getUser: PropTypes.func.isRequired,
-    getUserRepos:PropTypes.func.isRequired
+    getUserRepos: PropTypes.func.isRequired,
   };
 
   render() {
@@ -62,7 +62,7 @@ export class User extends Component {
           <div>
             {bio && (
               <Fragment>
-                <h3>Bio</h3> 
+                <h3>Bio</h3>
                 <p>{bio}</p>
               </Fragment>
             )}
