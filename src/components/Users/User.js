@@ -8,7 +8,7 @@ const User =({user, loading, getUser, getUserRepos, repos, match})=> {
   useEffect(()=>{
     getUser(match.params.login);
     getUserRepos(match.params.login);
-    
+    //eslint-disable-next-line    
   },[])
   
   
@@ -28,7 +28,7 @@ const User =({user, loading, getUser, getUserRepos, repos, match})=> {
       public_repos,
       public_gists,
       hireable,
-    } = this.props.user;
+    } = user;
 
     if (loading) return <Spinner />;
 
