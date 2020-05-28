@@ -15,7 +15,7 @@ class App extends Component {
     user: {},
     loading: false,
     alert: null,
-    repos:[]
+    repos: [],
   };
 
   //Search Functionality
