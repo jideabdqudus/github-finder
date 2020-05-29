@@ -15,8 +15,6 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
- 
-  
   //Set Alert
   const showAlert = (msg, type) => {
     setAlert({ msg, type });
@@ -37,9 +35,7 @@ const App = () => {
                 path="/"
                 render={(props) => (
                   <Fragment>
-                    <Search
-                      setAlert={showAlert}
-                    />
+                    <Search setAlert={showAlert} />
                     <Users />
                   </Fragment>
                 )}
@@ -48,14 +44,7 @@ const App = () => {
               <Route
                 exact
                 path="/user/:login"
-                render={(props) => (
-                  <User
-                    {...props}
-                    getUserRepos={getUserRepos}
-                    repos={repos}
-                   
-                  />
-                )}
+                component = {User}}
               />
             </Switch>
           </div>
