@@ -18,36 +18,65 @@ const GithubState = (props) => {
     loading: false,
   };
 
-  const [state, dispatch] = useReducer(GithubReducer, initialState)
+  const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   //Search Functionality
- const searchUsers = async (text) => {
+  const searchUsers = async (text) => {
     setLoading();
     const res = await axios.get(
       `https:api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
 
     dispatch({
-        type:SEARCH_USERS,
-        payload: res.data.items
-    })
+      type: SEARCH_USERS,
+      payload: res.data.items,
+    });
   };
 
-  const setLoading=()=> dispatch({type: SET_LOADING})
+  //get user repos
+  const getUserRepos = async (username) => {
+    setLoading();
+    const res = await axios.get(
+      `https:api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
 
+    dispatch({ type: GET_REPOS, payload: res.data });
+  };
 
-  return <GithubReducer.Provider
-    value={{
+    //gET siNGLE uSER
+    const getUser = async (username) => {
+      setLoading();
+      const res = await axios.get(
+        `https:api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      );
+  
+      dispatch({type: GET_USER, payload: res.data})
+    };
+  
+
+  //Clear USers
+  const clearUsers = () => {
+    dispatch({ type: CLEAR_USERS });
+  };
+
+  //Set Loading
+  const setLoading = () => dispatch({ type: SET_LOADING });
+
+  return (
+    <GithubReducer.Provider
+      value={{
         users: state.user,
         user: state.user,
         repos: state.repos,
         loading: state.loading,
-        searchUsers
-    }}
-  >
-  {props.children}
-  
-  </GithubReducer.Provider>
+        searchUsers,
+        clearUsers,
+        getUser
+      }}
+    >
+      {props.children}
+    </GithubReducer.Provider>
+  );
 };
 
-export default GithubState
+export default GithubState;
