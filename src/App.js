@@ -2,7 +2,6 @@ import React, { useState, Fragment } from "react";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/Users/Users";
-import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from "./components/Users/Search";
 import Alert from "./components/layout/Alert";
@@ -11,8 +10,6 @@ import User from "./components/Users/User";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   //Set Alert
@@ -41,11 +38,7 @@ const App = () => {
                 )}
               />
               <Route exact path="/about" component={About} />
-              <Route
-                exact
-                path="/user/:login"
-                component = {User}}
-              />
+              <Route exact path="/user/:login" component={User} />
             </Switch>
           </div>
         </div>

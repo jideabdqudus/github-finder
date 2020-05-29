@@ -63,7 +63,7 @@ const GithubState = (props) => {
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
-    <GithubReducer.Provider
+    <GithubContext.Provider
       value={{
         users: state.user,
         user: state.user,
@@ -76,7 +76,7 @@ const GithubState = (props) => {
       }}
     >
       {props.children}
-    </GithubReducer.Provider>
+    </GithubContext.Provider>
   );
 };
 
