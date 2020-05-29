@@ -6,6 +6,7 @@ const About = () => {
       <h1>About this app</h1>
       <p>App to search Github Users</p>
       <p>v1.0.0</p>
+      <a href="https://abdulqudus.com">Built by Jide Abdul-Qudus</a>
     </Fragment>
   );
 };

@@ -1,43 +1,33 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
-import Users from "./components/Users/Users";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Search from "./components/Users/Search";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 import User from "./components/Users/User";
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
+import Home from "./components/pages/Home";
+import NotFound from "./components/pages/404"
 
 const App = () => {
-  
-
   return (
     <GithubState>
-    <AlertState>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <div className="container">
-            <Alert/>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={(props) => (
-                  <Fragment>
-                    <Search/>
-                    <Users />
-                  </Fragment>
-                )}
-              />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/user/:login" component={User} />
-            </Switch>
+      <AlertState>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <div className="container">
+              <Alert />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/user/:login" component={User} />
+                <Route component={NotFound}/>
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
       </AlertState>
     </GithubState>
   );
